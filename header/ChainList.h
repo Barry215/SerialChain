@@ -45,14 +45,14 @@ public:
 
 template<typename T, typename K, typename Y>
 void ChainList<T, K, Y>::start() {
-    list<ChainHandler<T, K, Y>>::iterator it = this->handlers.begin();
+    list<ChainHandler<T, K, Y>>::iterator it = handlers.begin();
     bool flag = false;
 
-    while (it != this->handlers.end()) {
+    while (it != handlers.end()) {
         if (!it->getIsDone()) {
             flag = true;
-            if (it->whetherExecute(this->getPermanent(), this->resultMsg, NULL)) {
-                it->execute(this->getPermanent(), this->resultMsg, NULL);
+            if (it->whetherExecute(permanent, resultMsg, NULL)) {
+                it->execute(permanent, resultMsg, NULL);
             }
             it->setIsDone(true);
             break;
@@ -68,13 +68,13 @@ void ChainList<T, K, Y>::start() {
 template<typename T, typename K, typename Y>
 template<typename H>
 void ChainList<T, K, Y>::start(H &&arg) {
-    list<ChainHandler<T, K, Y>>::iterator it = this->handlers.begin();
+    list<ChainHandler<T, K, Y>>::iterator it = handlers.begin();
 
-    while (it != this->handlers.end()) {
+    while (it != handlers.end()) {
         if (!it->getIsDone()) {
 
-            if (it->whetherExecute(this->getPermanent(), this->resultMsg, arg)) {
-                it->execute(this->getPermanent(), this->resultMsg, arg);
+            if (it->whetherExecute(permanent, resultMsg, arg)) {
+                it->execute(permanent, resultMsg, arg);
             }
             it->setIsDone(true);
             break;
@@ -89,13 +89,13 @@ template<typename H, typename... Args>
 void ChainList<T, K, Y>::start(H &&arg, Args &&... parameters) {
     cout << "剩余可变参的个数:" << sizeof...(parameters) << endl;
 
-    list<ChainHandler<T, K, Y>>::iterator it = this->handlers.begin();
+    list<ChainHandler<T, K, Y>>::iterator it = handlers.begin();
 
-    while (it != this->handlers.end()) {
+    while (it != handlers.end()) {
         if (!it->getIsDone()) {
 
-            if (it->whetherExecute(this->getPermanent(), this->resultMsg, arg)) {
-                it->execute(this->getPermanent(), this->resultMsg, arg);
+            if (it->whetherExecute(permanent, resultMsg, arg)) {
+                it->execute(permanent, resultMsg, arg);
             }
             it->setIsDone(true);
             break;
