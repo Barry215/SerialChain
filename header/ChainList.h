@@ -138,7 +138,7 @@ void ChainList<T, K, Y>::setResultMsg(const ResultMsg<K> &resultMsg) {
 }
 
 template<typename T, typename K, typename Y>
-ChainList::ChainList(T permanent, const ResultMsg<K> &resultMsg,
+ChainList<T, K, Y>::ChainList(T permanent, const ResultMsg<K> &resultMsg,
                      const list<ChainHandler<T, K, Y>, allocator<ChainHandler<T, K, Y>>> &handlers) : permanent(
         permanent), resultMsg(resultMsg), handlers(handlers) {}
 
