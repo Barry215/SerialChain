@@ -113,7 +113,7 @@ T ChainList<T, K, Y>::getPermanent() const {
 
 template<typename T, typename K, typename Y>
 void ChainList<T, K, Y>::setPermanent(T permanent) {
-    ChainList::permanent = permanent;
+    ChainList<T, K, Y>::permanent = permanent;
 }
 
 template<typename T, typename K, typename Y>
@@ -123,7 +123,7 @@ const list<ChainHandler<T, K, Y>> &ChainList<T, K, Y>::getHandlers() const {
 
 template<typename T, typename K, typename Y>
 void ChainList<T, K, Y>::setHandlers(const list<ChainHandler<T, K, Y>> &handlers) {
-    ChainList::handlers = handlers;
+    ChainList<T, K, Y>::handlers = handlers;
 }
 
 template<typename T, typename K, typename Y>
@@ -133,14 +133,14 @@ const ResultMsg<K> &ChainList<T, K, Y>::getResultMsg() const {
 
 template<typename T, typename K, typename Y>
 void ChainList<T, K, Y>::setResultMsg(const ResultMsg<K> &resultMsg) {
-    ChainList::resultMsg = resultMsg;
+    ChainList<T, K, Y>::resultMsg = resultMsg;
 }
 
 template<typename T, typename K, typename Y>
 ChainList<T, K, Y>::ChainList(T permanent, const ResultMsg<K> &resultMsg,
                               const list<ChainHandler<T, K, Y>> &handlers) : permanent(permanent),
-                                                                                             resultMsg(resultMsg),
-                                                                                             handlers(handlers) {}
+                                                                             resultMsg(resultMsg),
+                                                                             handlers(handlers) {}
 
 
 #endif //SERIALCHAIN_CHAINLIST_H
